@@ -1,12 +1,15 @@
 import { Elysia, t } from "elysia";
 import { admin } from "./firebase";
 import { RtcTokenBuilder, RtcRole } from "agora-access-token";
+import { swagger } from "@elysiajs/swagger";
 
 const app = new Elysia();
 
 // Agora configuration - replace with your actual values
 const APP_ID = process.env.APP_ID || "your_agora_app_id";
 const APP_CERTIFICATE = process.env.APP_CERTIFICATE || "your_agora_app_certificate";
+
+app.use(swagger({ path: "/" }));
 
 app.post("/token", async ({ body, set }) => {
   try {
@@ -46,7 +49,7 @@ app.post("/token", async ({ body, set }) => {
 }, {
   body: t.Object({
     channelName: t.String(),
-    uid:  t.Number(),
+    uid: t.Number(),
     role: t.Union([t.Literal("publisher"), t.Literal("subscriber")]),
     expireTime: t.Optional(t.Number())
   }),

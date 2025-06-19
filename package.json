@@ -6,6 +6,7 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/swagger": "^1.3.0",
     "agora-access-token": "^2.0.4",
     "elysia": "latest",
     "firebase-admin": "^13.4.0"
