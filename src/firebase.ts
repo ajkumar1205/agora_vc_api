@@ -1,7 +1,7 @@
-import * as fire from "firebase-admin";
+import fire from "firebase-admin";
 
 const serviceAccount = JSON.parse(
-    await Bun.file(import.meta.dir + "/../serviceAccountKey.json").text()
+    await Bun.file(import.meta.dir + "/../agora-vc-test.json").text()
 );
 
 export const admin = fire.initializeApp({
