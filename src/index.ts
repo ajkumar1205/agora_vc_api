@@ -11,6 +11,10 @@ const APP_CERTIFICATE = process.env.APP_CERTIFICATE || "your_agora_app_certifica
 
 app.use(swagger({ path: "/" }));
 
+app.get("/healthz", () => {
+  return "I am good";
+})
+
 app.post("/token", async ({ body, set }) => {
   try {
     const { channelName, uid, role, expireTime } = body;
